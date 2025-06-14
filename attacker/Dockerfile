@@ -12,7 +12,7 @@ RUN apt update && apt install -y \
 RUN pip3 install requests --break-system-packages
 
 # Copy file Python to container
-COPY ddos_sim.py /app/ddos_sim.py
+COPY dos_sim.py /app/dos_sim.py
 COPY attacker.py /app/attacker.py
 
 # Set working directory
