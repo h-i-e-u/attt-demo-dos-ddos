@@ -29,21 +29,21 @@ run build-all.ps1 in attt-demo-dos-ddos
 .\build-all.ps1
 ```
 ### 🧪 Step 3: Run & Test
-🔥 Create network for safe testing
+🔥 **Create network for safe testing**
 ```bash
 docker network create ddos-demo-net
 ```
-🟢 Run the Victim Server with limit cpu and memory (--cpu, --memory flag)
+🟢 **Run the Victim Server with limit cpu and memory (--cpu, --memory flag)**
 I run with 10% of 1 core and 256m memory
 ```bash
 docker run --rm -d --name server --network ddos-demo-net --cpus="0.1" --memory="256m" -p 5000:5000 ddos-server
 ```
 
-🔥 Run the Attacker
+🔥 **Run the Attacker**
 ```bash
 docker run -it --rm --network ddos-demo-net --name attacker ddos-attacker
 ```
-🤖 Run the Botnet (Multiple Instances for DDoS)
+🤖 **Run the Botnet (Multiple Instances for DDoS)**
 change the (--name) flag to spin more botnet bot, bot2, bot3, etc... 
 ```bash
 docker run -it --rm --network ddos-demo-net --name bot ddos-botnet
@@ -52,14 +52,14 @@ docker run -it --rm --network ddos-demo-net --name bot ddos-botnet
 docker run -it --rm --network ddos-demo-net --name bot2 ddos-botnet
 ```
 ---
-🌐 Test DoS
+🌐 **Test DoS**
 run the python code to attack http flood 50 thread and see the result
 in attacker container 
 ```bash
 python3 dos_sim.py
 ```
 
-🌐 Test DDoS
+🌐 **Test DDoS**
 run trojan in each botnet
 ```bash
 python3 botnet2.py
@@ -97,6 +97,6 @@ docker stop server
 
 ```
 
-```vbnet
+```code
 Let me know if you want to include usage examples, architecture diagrams, or badges (like Docker or GitHub stars) at the top!
 ```
