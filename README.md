@@ -23,7 +23,7 @@ cd attt-demo-dos-ddos
 ```
 
 ### 🛠️ Step 2: Build Docker Images
-**remember to start docker engine**
+**remember to start docker engine**\
 run build-all.ps1 in attt-demo-dos-ddos
 ```bash
 .\build-all.ps1
@@ -33,7 +33,7 @@ run build-all.ps1 in attt-demo-dos-ddos
 ```bash
 docker network create ddos-demo-net
 ```
-🟢 **Run the Victim Server with limit cpu and memory (--cpu, --memory flag)**
+🟢 **Run the Victim Server with limit cpu and memory (--cpu, --memory flag)**\
 I run with 10% of 1 core and 256m memory
 ```bash
 docker run --rm -d --name server --network ddos-demo-net --cpus="0.1" --memory="256m" -p 5000:5000 ddos-server
@@ -43,7 +43,7 @@ docker run --rm -d --name server --network ddos-demo-net --cpus="0.1" --memory="
 ```bash
 docker run -it --rm --network ddos-demo-net --name attacker ddos-attacker
 ```
-🤖 **Run the Botnet (Multiple Instances for DDoS)**
+🤖 **Run the Botnet (Multiple Instances for DDoS)**\
 change the (--name) flag to spin more botnet bot, bot2, bot3, etc... 
 ```bash
 docker run -it --rm --network ddos-demo-net --name bot ddos-botnet
@@ -52,19 +52,18 @@ docker run -it --rm --network ddos-demo-net --name bot ddos-botnet
 docker run -it --rm --network ddos-demo-net --name bot2 ddos-botnet
 ```
 ---
-🌐 **Test DoS**
-run the python code to attack http flood 50 thread and see the result
-in attacker container 
+🌐 **Test DoS**\
+run the python code to attack http flood 50 thread and see the result in attacker container 
 ```bash
 python3 dos_sim.py
 ```
 
-🌐 **Test DDoS**
+🌐 **Test DDoS**\
 run trojan in each botnet
 ```bash
 python3 botnet2.py
 ```
-then run in attacker
+then run in attacker\
 if spin 1 bot 
 ```bash
 python3 attacker.py -b bot 
@@ -73,11 +72,11 @@ if multi bot [bot, bot2, bot3, ect]
 ```bash
 python3 attacker.py -b bot bot2 bot3 etc 
 ```
-**Note:** flag -b is the bot name in previous docker container spin up (--name)
-*use name instead of ip for convenient*
+**Note:** flag -b is the bot name in previous docker container spin up (--name)\
+*I use name instead of ip for convenient*
 
 ### 🧹 Step 4: Clean Up
-We have flag *--rm* when spin up container so just need to `exit` the attacker and bot
+We have flag *--rm* when spin up container so just need to `exit` the attacker and bot\
 We also need to stop server
 ```bash
 docker stop server
