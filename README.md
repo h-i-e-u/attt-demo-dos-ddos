@@ -33,7 +33,7 @@ run `build-all.ps1` in attt-demo-dos-ddos
 ```bash
 docker network create ddos-demo-net
 ```
-🟢 **Run the Victim Server with limit cpu and memory `--cpu` `--memory flag`**\
+🟢 **Run the Victim Server with limit cpu and memory `--cpu` `--memory` flag**\
 I run with 10% of 1 core and 256m memory
 ```bash
 docker run --rm -d --name server --network ddos-demo-net --cpus="0.1" --memory="256m" -p 5000:5000 ddos-server
